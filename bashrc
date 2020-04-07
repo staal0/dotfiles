@@ -4,9 +4,11 @@
 alias ls='ls --color=auto'
 alias grep='grep --colour=auto'
 alias vifm='~/.dwm/vifmrun'
+alias mocp="mocp -T ~/.moc/themes/tty"
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 if [[ ${EUID} == 0 ]] ; then
 	PS1='\[\033[01;31m\][\h\[\033[01;36m\] \w\[\033[01;31m\]]\$\[\033[00m\] '
