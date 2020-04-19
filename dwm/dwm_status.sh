@@ -96,7 +96,7 @@ print_mem(){
 #}
 
 print_date(){
-	date "+%a (%V) %x %X"
+	date "+%a (%V) %d-%m-%Y %X"
 }
 
 while true
