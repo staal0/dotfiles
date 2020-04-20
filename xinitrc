@@ -8,9 +8,9 @@ clipmenud &
 numlockx &
 firefox &
 thunderbird &
-st &
-st & 
 signal-desktop &
+sleep 5 && st &
+sleep 5 && st &
 xrdb /home/staal/.Xresources &
 
 exec dwm
