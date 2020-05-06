@@ -1,11 +1,24 @@
 #
 # ~/.bashrc
 #
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+
 alias ls='ls --color=auto'
 alias grep='grep --colour=auto'
 alias vifm='~/.dwm/vifmrun'
 alias mocp="mocp -T ~/.moc/themes/tty"
-
+alias xprop="xprop | awk '/^WM_CLASS/{sub(/.* =/, \"instance:\"); sub(/,/, \"\nclass:\"); print} /^WM_NAME/{sub(/.* =/, \"title:\"); print};'"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export _JAVA_AWT_WM_NONREPARENTING=1
