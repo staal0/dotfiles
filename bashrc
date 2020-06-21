@@ -23,13 +23,22 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-tput smkx
 
 if [[ ${EUID} == 0 ]] ; then
 	PS1='\[\033[01;31m\][\h\[\033[01;36m\] \w\[\033[01;31m\]]\$\[\033[00m\] '
 else
 	PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \w\[\033[01;32m\]]\$\[\033[00m\] '
 fi
+
+
+ll() {
+lines=$( ls -la $1 | wc -l )
+ if [[ $lines -gt 90 ]] ; then
+   ls -lha $1 | less -iXRS
+ else
+   ls -lha $1
+ fi
+}
 
 
 cconv() {
