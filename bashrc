@@ -14,7 +14,7 @@ if ! shopt -oq posix; then
 fi
 
 
-alias ls='ls --color=auto'
+alias ls='ls --color=always'
 alias grep='grep --colour=auto'
 alias vifm='~/.dwm/vifmrun'
 alias mocp="mocp -T ~/.moc/themes/tty"
@@ -34,9 +34,9 @@ fi
 ll() {
 lines=$( ls -la $1 | wc -l )
  if [[ $lines -gt 90 ]] ; then
-   ls -lha $1 | less -iXRS
+   ls -lha "$@" | less -iXRS
  else
-   ls -lha $1
+   ls -lha "$@"
  fi
 }
 
