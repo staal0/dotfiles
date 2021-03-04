@@ -1,0 +1,36 @@
+#!/bin/bash
+if [ $# -gt 0 ]
+then
+  if [ $1 ]
+  then
+    x=$( calcurse -c $HOME/.calcurse/x/apts -d $1 )
+    y=$( calcurse -c $HOME/.calcurse/y/apts -d $1 )
+
+    if [ ! -z "$D" ]
+    then
+      echo "########## X ##########"
+      calcurse -c $HOME/.calcurse/x/apts -d $1
+    fi
+
+    if [ ! -z "$I" ]
+    then
+      echo "########## y ##########"
+      calcurse -c $HOME/.calcurse/y/apts -d $1 
+    fi
+  fi
+else
+  x=$( calcurse -c $HOME/.calcurse/x/apts -a )
+  y=$( calcurse -c $HOME/.calcurse/y/apts -a )
+
+  if [ ! -z "$D" ]
+  then
+    echo "########## X ##########"
+    calcurse -c $HOME/.calcurse/x/apts -a 
+  fi
+
+  if [ ! -z "$I" ]
+  then
+    echo "########## y ##########"
+    calcurse -c $HOME/.calcurse/y/apts -a 
+  fi
+fi

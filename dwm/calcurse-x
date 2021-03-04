@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/calcurse -C $HOME/.calcurse/x -D $HOME/.calcurse/x
