@@ -4,10 +4,7 @@
 #
 ###
 
-#DMENU='dmenu -i -b -fn -xos4-terminus-medium-r-*--12-*-*-*-*-*-iso10646-1 -nb #000000 -nf #999999 -sb #000000 -sf #31658C'
-#cmd=$(dmenu  -l 20  -nf '#999' -nb '#292d3e' -sf '#eee' -sb '#0077bb' -p 'Choose Screenshot Type'   <<< "$prog")
-#DMENU='dmenu -i -fn -xos4-terminus-medium-r-*--12-*-*-*-*-*-iso10646-1 -nb #292d33 -nf #999 -sb #0077bb -sf #eee'
-DMENU='dmenu -l 20 -nb #292d33 -nf #999 -sb #0077bb -sf #eee'
+DMENU='dmenu -l 20 -nf #f8f8f2 -nb #20212b -sf #f8f8f2 -sb #44475a'
 choice=$(echo -e "shutdown\nreboot" | $DMENU)
 
 case "$choice" in
