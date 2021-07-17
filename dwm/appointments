@@ -10,12 +10,14 @@ then
     then
       echo "########## X ##########"
       calcurse -c $HOME/.calcurse/x/apts -d $1
+      echo ""
     fi
 
     if [ ! -z "$I" ]
     then
       echo "########## y ##########"
       calcurse -c $HOME/.calcurse/y/apts -d $1 
+      echo ""
     fi
   fi
 else
@@ -26,11 +28,13 @@ else
   then
     echo "########## X ##########"
     calcurse -c $HOME/.calcurse/x/apts -a 
+    echo ""
   fi
 
   if [ ! -z "$I" ]
   then
     echo "########## y ##########"
     calcurse -c $HOME/.calcurse/y/apts -a 
+    echo ""
   fi
 fi
