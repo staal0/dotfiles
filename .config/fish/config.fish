@@ -2,7 +2,6 @@ set fish_greeting
 set -x BROWSER qutebrowser
 set -Ux EDITOR vim
 set -x VISUAL vim
-set -x EDITOR vim
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 set -x _JAVA_AWT_WM_NONREPARENTING 1
