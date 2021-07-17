@@ -1,6 +1,6 @@
 #!/bin/bash
 # Dependency: dunst libnotify-bin
-IMG_PATH=/home/staal/scrot/
+IMG_PATH=$HOME/scrot/
 EDIT=gimp
 VIEW=sxiv
 TIME=3000 #Miliseconds notification should remain visible
