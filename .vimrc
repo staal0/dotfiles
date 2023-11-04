@@ -4,18 +4,10 @@ colorscheme dracula
 
 :set number
 
-" Read-only .doc through antiword
-autocmd BufReadPre *.doc silent set ro
-autocmd BufReadPost *.doc silent %!antiword "%"
+:set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+:set list
 
-" Read-only odt/odp through odt2txt
-autocmd BufReadPre *.odt,*.odp silent set ro
-autocmd BufReadPost *.odt,*.odp silent %!odt2txt "%"
+noremap <F5> :set list!<CR>
+inoremap <F5> <C-o>:set list!<CR>
+cnoremap <F5> <C-c>:set list!<CR>
 
-" Read-only pdf through pdftotext
-autocmd BufReadPre *.pdf silent set ro
-autocmd BufReadPost *.pdf silent %!pdftotext -nopgbrk -layout -q -eol unix "%" - | fmt -w78
-
-" Read-only rtf through unrtf
-autocmd BufReadPre *.rtf silent set ro
-autocmd BufReadPost *.rtf silent %!unrtf --text
