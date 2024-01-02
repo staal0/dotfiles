@@ -1,7 +1,8 @@
 set fish_greeting
-set -x BROWSER qutebrowser
+set -x BROWSER surf
 set -Ux EDITOR vim
 set -x VISUAL vim
+set -x EDITOR vim
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 set -x _JAVA_AWT_WM_NONREPARENTING 1
@@ -15,19 +16,27 @@ set -x CPATH $CPATH:/usr/include/atk-1.0/
 
 bind [P 'delete-char'
 
-contains $HOME/.dwm $fish_user_paths;
-contains $HOME/.local/bin $fish_user_paths;
+contains /home/staal/.dwm $fish_user_paths;
+contains /home/staal/.local/bin $fish_user_paths;
+contains /home/staal/.cargo/bin $fish_user_paths;
 
 alias ls='ls --color=always'
 alias grep='grep --colour=auto'
-alias mocp="mocp -T ~/.moc/themes/tty"
+# alias mocp="mocp -T ~/.moc/themes/tty"
 alias xprop="xprop | awk '/^WM_CLASS/{sub(/.* =/, \"instance:\"); sub(/,/, \"\nclass:\"); print} /^WM_NAME/{sub(/.* =/, \"title:\"); print};'"
 alias batdiff='git diff --name-only --diff-filter=d | xargs bat --diff'
+alias handbrake="ghb"
+alias cconv="cconv.py"
 
-function cconv --argument number from to
- echo -n $number $from =" "
- curl -s "https://currency-api.appspot.com/api/"$from"/"$to".json?amount="$number | sed 's/^{.*.amount"://' | sed 's/,"m.*//'
- echo " "$to
+zoxide init --cmd cd fish | source
+
+function ll
+ set lines ( ls -la $1 | wc -l )
+ if [ $lines -gt 90 ]
+   ls -lha $argv | less -iXRS
+ else
+   ls -lha $argv
+ end
 end
 
 function genpasswd --argument number
