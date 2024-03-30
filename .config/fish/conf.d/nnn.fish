@@ -1,4 +1,4 @@
-alias nnn='nnn -e'
+alias nnn='n'
 export NNN_FCOLORS="0B0B04060006060009060B06"
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_PAGER='bat'
