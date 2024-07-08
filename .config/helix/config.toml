@@ -1,0 +1,43 @@
+theme = "catppuccin_mocha"
+
+[editor]
+auto-save = true
+rulers = [80, 120]
+bufferline = "multiple"
+auto-format = true
+#line-number = "relative"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+nbsp = "none"
+nnbsp = "none"
+newline = "none"
+
+[editor.indent-guides]
+render = true
+character = "┊"
+
+[editor.statusline]
+left = [ "mode", "spinner", "file-name" ]
+center = [ "version-control" ]
+right = [ "diagnostics", "selections", "position", "position-percentage", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.file-picker]
+hidden = false # Show hidden files
+
+[keys.normal]
+"C-j" = ["delete_selection", "move_visual_line_down", "paste_before"]
+"C-k" = ["delete_selection", "move_visual_line_up", "paste_before"]
+"C-l" = ["delete_selection", "move_char_left", "paste_before"]
+"C-h" = ["delete_selection", "paste_before"]
+"esc" = ["collapse_selection", "keep_primary_selection"]

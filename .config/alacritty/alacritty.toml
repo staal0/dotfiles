@@ -1,4 +1,4 @@
-import = ["/home/staal/.config/alacritty/dracula.toml"]
+import = ["/home/staal/.config/alacritty/catppuccin-mocha.toml"]
 
 [env]
 TERM = "xterm-256color"
