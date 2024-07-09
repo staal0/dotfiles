@@ -6,7 +6,8 @@ exec_always wl-paste --primary --watch wl-copy
 #
 # Read `man 5 sway` for a complete reference.
 
-exec wl-paste --watch cliphist store --no-persist
+exec_always killall wl-paste
+exec_always wl-paste -p --watch cliphist store --no-persist
 
 font pango: monospace Medium 15
 input type:keyboard xkb_numlock enabled
@@ -35,16 +36,17 @@ set $term alacritty -e fish
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $uifont "monospace 17"
-set $highlight #3daee9
+set $highlight #89b4fa
 set $prompt #ffffff
 set $menu bemenu-run --fn $uifont -p "$" -B 1 --hp 10 --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" --bdr "$highlight" | xargs swaymsg exec
 set $clipboard cliphist list | bemenu -l 20 --fn $uifont -p "Clipboard" -B 1 --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" --bdr "$highlight" | cliphist decode | wl-copy -p
+set $session_menu ~/scripts/session_menu.sh
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/staal/documents/wallpaper/SWAY-little_tree.png fill
+output * bg /home/staal/documents/wallpaper/catppuccin.jpg fill
 #
 # Example configuration:
 #
@@ -106,10 +108,11 @@ exec swayidle -w \
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Ctrl+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+q exec $session_menu
 #
 # Moving around:
 #
