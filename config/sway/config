@@ -269,3 +269,12 @@ input * {
 input <identifier> xkb_model "pc101"
 
 include /etc/sway/config.d/*
+
+#
+# Auto start
+#
+exec swaymsg "workspace 2; exec qutebrowser;"
+exec swaymsg "workspace 3; exec alacritty -e aerc;"
+exec swaymsg "workspace 1; exec signal-desktop; split horizontal;"
+exec sleep 3s && swaymsg "workspace 1; exec alacritty -e newsboat; split horizontal;"
+exec sleep 5s && swaymsg "workspace 1; exec alacritty -e fish; split vertical;"

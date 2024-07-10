@@ -26,8 +26,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-read -t 5 -p "Start X11? [y]/n: "
-if test "$?" != 0 -o "$REPLY" = y -o "$REPLY" = Y -o "$REPLY" = ""
-then
-exec startx 1>~/.xout 2>~/.xerr
-fi
+# read -t 5 -p "Start X11? [y]/n: "
+# if test "$?" != 0 -o "$REPLY" = y -o "$REPLY" = Y -o "$REPLY" = ""
+# then
+# exec startx 1>~/.xout 2>~/.xerr
+# fi
+
+[ "$(tty)" = "/dev/tty1" ] && exec sway
