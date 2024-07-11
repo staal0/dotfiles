@@ -1,9 +1,0 @@
-#!/bin/bash
-
-cd ~/applications
-prog="$(ls *.AppImage)"
-cmd=$(dmenu  -l 20  -nf '#f8f8f2' -nb '#20212b' -sf '#f8f8f2' -sb '#44475a' -p 'Launch AppImage'   <<< "$prog")
-
-case ${cmd%% *} in
-	*)	exec "~/applications/${cmd}"  ;;
-esac
