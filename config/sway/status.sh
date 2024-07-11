@@ -1,4 +1,6 @@
-#!/bin/bash
+# The Sway configuration file in ~/.config/sway/config calls this script.
+# You should see changes to the status bar after saving this script.
+# If not, do "killall swaybar" and $mod+Shift+c to reload the configuration.
 
 # PIPEWIRE
 #print_volume() {
@@ -33,7 +35,7 @@ print_mem(){
 	# memfree=$(($(grep -m1 'MemAvailable:' /proc/meminfo | awk '{print $2}') / 1024))
 	# echo -e "$memfree"
 	mem="$(free | grep Mem | awk '{print $3/$2 * 100.0}')"
-	printf "%.1f" $mem
+	LC_NUMERIC="en_US.UTF-8" printf "%.1f" $mem
 	echo "% mem"
 }
 
@@ -65,9 +67,4 @@ print_date(){
 	date "+%a (%V) %d-%m-%Y %X"
 }
 
-while true
-do
-	xsetroot -name "$(print_cpu) | $(print_mem) | $(print_volume) | $(print_date)"
-	sleep 1
-done
-
+echo "$(print_volume) | $(print_date)"
