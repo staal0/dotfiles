@@ -1,4 +1,4 @@
 #!/bin/bash
-systemctl restart --user dunst.service
+killall dunst && dunst &
 notify-send -u low -t 3000 'TEST' 'test';
 exit
