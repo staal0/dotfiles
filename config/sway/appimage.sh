@@ -6,7 +6,7 @@ prog="$(ls *.AppImage)"
 uifont="monospace 17"
 prompt="#ffffff"
 highlight="#3daee9"
-cmd=$(bemenu -l 20 --fn "$uifont" -p 'Launch AppImage' -B 1 --tf $prompt --hf $highlight --sf $highlight --scf $highlight --bdr $highlight <<< "$prog")
+cmd=$(bemenu -i -l 20 --fn "$uifont" -p 'Launch AppImage' -B 1 --tf $prompt --hf $highlight --sf $highlight --scf $highlight --bdr $highlight <<< "$prog")
 
 case ${cmd%% *} in
 	*)	exec "~/applications/${cmd}"  ;;
