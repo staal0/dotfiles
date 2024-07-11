@@ -17,8 +17,8 @@
     indicate_hidden = yes
     transparency = 15
     separator_height = 1
-    padding = 8
-    horizontal_padding = 10
+    padding = 10
+    horizontal_padding = 25
     text_icon_padding = 0
     frame_width = 1
     frame_color = "#44475a"
