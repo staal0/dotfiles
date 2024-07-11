@@ -8,7 +8,7 @@ exec swaymsg "workspace 2; exec qutebrowser;"
 exec swaymsg "workspace 3; exec alacritty -e aerc;"
 exec swaymsg "workspace 1; exec signal-desktop; split horizontal;"
 exec sleep 3s && swaymsg "workspace 1; exec alacritty -e newsboat; split horizontal;"
-exec sleep 5s && swaymsg "workspace 1; exec alacritty -e fish; split vertical;"
+exec sleep 5s && swaymsg "workspace 1; exec alacritty; split vertical;"
 
 font pango: monospace Medium 15
 input type:keyboard xkb_numlock enabled
@@ -25,7 +25,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty -e fish
+set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
