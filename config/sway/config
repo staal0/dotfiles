@@ -33,7 +33,7 @@ set $uifont "monospace 17"
 set $highlight #89b4fa
 set $prompt #ffffff
 set $menu bemenu-run -i --fn $uifont -p "$" -B 1 --hp 10 --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" --bdr "$highlight" | xargs swaymsg exec
-set $clipboard cliphist list | bemenu -l 20 --fn $uifont -p "Clipboard" -B 1 --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" --bdr "$highlight" | cliphist decode | wl-copy -p
+set $clipboard cliphist list | bemenu -l 20 --fn $uifont -p "Clipboard" -B 1 --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" --bdr "$highlight" | cliphist decode | wl-copy && wl-copy -p
 set $powermenu ~/.config/sway/powermenu.sh
 set $appimage ~/.config/sway/appimage.sh
 set $appointments ~/.config/sway/appointments.sh
