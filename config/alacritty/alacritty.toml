@@ -1,6 +1,5 @@
-import = ["/home/staal/.config/alacritty/catppuccin-mocha.toml"]
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/fish"
 
 [env]
@@ -33,3 +32,8 @@ mods = "Alt"
 [window.padding]
 x = 5
 y = 5
+
+[general]
+import = ["/home/staal/.config/alacritty/gruvbox_dark.toml"]
+
+[terminal]

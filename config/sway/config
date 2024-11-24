@@ -4,16 +4,31 @@
 exec --no-startup-id dunst
 #exec_always killall wl-paste
 exec wl-paste -p --watch cliphist store --no-persist
-exec swaymsg "workspace 2; exec qutebrowser;"
-exec swaymsg "workspace 3; exec alacritty -e aerc;"
+exec wl-paste --watch cliphist store --no-persist
+exec swaymsg "workspace 2; exec zen-browser;"
+#exec swaymsg "workspace 3; exec alacritty -e aerc;"
 exec swaymsg "workspace 1; exec signal-desktop; split horizontal;"
-exec sleep 3s && swaymsg "workspace 1; exec alacritty -e newsboat; split horizontal;"
-exec sleep 5s && swaymsg "workspace 1; exec alacritty; split vertical;"
+#exec sleep 3s && swaymsg "workspace 1; exec alacritty -e newsboat; split horizontal;"
+#exec sleep 5s && swaymsg "workspace 1; exec alacritty; split vertical;"
 
 font pango: monospace Medium 15
 input type:keyboard xkb_numlock enabled
 input "type:keyboard" xkb_options caps:escape
 focus_follows_mouse no
+
+#
+# Colors:
+#
+set $bg      #282828
+set $bg0_h   #1d2021
+set $bg1     #3c3836
+set $bg2     #504945
+set $bg3     #665c54
+set $fg      #ebdbb2
+set $red     #cc241d
+set $blue    #458588
+set $purple  #b16286
+set $yellow  #d79921
 
 # Hide mouse cursor after a period of inactivity.
 # seat * hide_cursor 10000
@@ -32,7 +47,7 @@ set $term alacritty
 set $uifont "monospace 17"
 set $highlight #89b4fa
 set $prompt #ffffff
-set $menu bemenu-run -i --fn $uifont -p "$" -B 1 --hp 10 --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" --bdr "$highlight" | xargs swaymsg exec
+set $menu bemenu-run -c -W 0.25 -l 20 -i --fn $uifont -p "run:" -B 1 --hp 10 --tf "$red" --hf "$yellow" --sf "$blue" --scf "$blue" --bdr "$purple" | xargs swaymsg exec
 set $clipboard cliphist list | bemenu -l 20 --fn $uifont -p "Clipboard" -B 1 --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" --bdr "$highlight" | cliphist decode | wl-copy && wl-copy -p
 set $powermenu ~/.config/sway/powermenu.sh
 set $appimage ~/.config/sway/appimage.sh
@@ -41,7 +56,7 @@ set $appointments ~/.config/sway/appointments.sh
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/staal/documents/wallpaper/catppuccin.jpg fill
+output * bg ~/documents/wallpaper/mars.jpg fill
 
 ### Idle configuration
 exec swayidle -w \
@@ -88,6 +103,7 @@ exec swayidle -w \
     bindsym $mod+Shift+q exec $powermenu
     bindsym $mod+Shift+p exec $appimage
     bindsym $mod+Shift+a exec $appointments
+
 #
 # Moving around:
 #
@@ -205,15 +221,13 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-include catppuccin-mocha
-
-# target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $rosewater $lavender
-client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
+# Class                 Border  Backgr.  Text    Indigator Child border
+client.focused          $bg3    $bg0_h   $fg     $bg3      $bg3
+client.focused_inactive $bg2    $bg0_h   $bg3    $bg2      $bg2
+client.unfocused        $bg2    $bg0_h   $bg3    $bg2      $bg2
+client.urgent           $bg2    $red     $fg     $red      $red
+client.placeholder      $bg0_h  $bg0_h   $fg     $bg0_h    $bg0_h
+client.background       $fg
 
 #
 # Status Bar:
@@ -224,17 +238,18 @@ bar {
    # status_command while date +'%a (%V) %d-%m-%Y %X'; do sleep 1; done
    status_command while ~/.config/sway/status.sh; do sleep 1; done
 
-   colors {
-     background         $base
-     statusline         $text
-     focused_statusline $text
-     focused_separator  $base
-     focused_workspace  $base $base $green
-     active_workspace   $base $base $blue
-     inactive_workspace $base $base $surface1
-     urgent_workspace   $base $base $surface1
-     binding_mode       $base $base $surface1
-   }
+    colors {
+        background $bg
+        separator  $purple
+        statusline $blue
+
+        # State             Border  BG      Text
+        focused_workspace   $bg3    $bg0_h  $fg
+        active_workspace    $bg3    $bg0_h  $fg
+        inactive_workspace  $bg2    $bg0_h  $bg3
+        urgent_workspace    $bg2    $red    $fg
+        binding_mode        $bg2    $bg0_h  $fg
+    }
 }
 
 input * {
